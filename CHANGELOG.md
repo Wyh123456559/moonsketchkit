@@ -16,6 +16,7 @@ All notable changes to MoonSketchKit are recorded here.
 - Added CLI demo and tests.
 - Added deterministic benchmark-style command and scenario notes.
 - Added accuracy notes for false positives and frequency estimates.
+- Expanded the CLI demo to include Counting Bloom filter behavior.
 
 ### Verified
 

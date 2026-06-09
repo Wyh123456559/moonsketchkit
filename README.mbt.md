@@ -69,6 +69,9 @@ moon run cmd/main
 moon run cmd/bench
 ```
 
+`cmd/main` prints a short demo for Bloom Filter, Counting Bloom Filter, and
+Count-Min Sketch. `cmd/bench` prints deterministic CSV-like rows for review.
+
 ## Roadmap
 
 - Counting Bloom filter
