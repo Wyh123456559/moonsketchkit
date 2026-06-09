@@ -7,6 +7,7 @@ structures and stream-friendly approximate algorithms.
 
 - MoonBit package skeleton.
 - Integer Bloom filter.
+- Counting Bloom filter.
 - Integer Count-Min Sketch.
 - Deterministic hash helper.
 - JSON summary export.
@@ -14,20 +15,16 @@ structures and stream-friendly approximate algorithms.
 
 ## Near-Term Work
 
-1. Counting Bloom Filter
-
-   Support removal-like workflows by tracking small counters instead of bits.
-
-2. Stable String Hashing
+1. Stable String Hashing
 
    Add string-key support without relying on platform-specific APIs.
 
-3. Benchmark Notes
+2. Benchmark Notes
 
    Record false-positive behavior and Count-Min Sketch estimation stability
    across deterministic workloads.
 
-4. Serialization
+3. Serialization
 
    Add import/export helpers so sketches can be persisted or compared.
 
@@ -37,4 +34,3 @@ structures and stream-friendly approximate algorithms.
 - Large external dependencies.
 - Networked storage or database integration.
 - Platform-specific IO in the core library.
-

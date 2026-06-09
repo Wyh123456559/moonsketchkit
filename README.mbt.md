@@ -14,6 +14,7 @@ visualization.
 Current foundation:
 
 - Integer Bloom filter
+- Counting Bloom filter
 - Integer Count-Min Sketch
 - Deterministic internal hash helper
 - JSON summary export
@@ -30,6 +31,19 @@ test {
 
   assert_true(filter.might_contain(42))
   assert_false(filter.might_contain(99))
+}
+```
+
+## Counting Bloom Filter Example
+
+```mbt
+test {
+  let filter = CountingBloomFilter::new(64, 3)
+  filter.add(42)
+  filter.add(42)
+  filter.remove(42)
+
+  assert_true(filter.might_contain(42))
 }
 ```
 
@@ -57,8 +71,8 @@ moon run cmd/main
 ## Roadmap
 
 - Counting Bloom filter
+- Merge helpers for distributed sketches
 - Stable string hashing support
 - HyperLogLog-style cardinality sketch
 - Serialization and import helpers
 - Benchmark scenarios and false-positive notes
-
