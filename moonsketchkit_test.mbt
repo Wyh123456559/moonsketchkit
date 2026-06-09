@@ -68,6 +68,34 @@ test "bloom filter exports summary json" {
 }
 
 ///|
+test "counting bloom filter supports add and remove" {
+  let filter = @moonsketchkit.CountingBloomFilter::new(64, 3)
+  filter.add(42)
+  assert_true(filter.might_contain(42))
+  filter.remove(42)
+  assert_false(filter.might_contain(42))
+}
+
+///|
+test "counting bloom filter keeps duplicate insertions" {
+  let filter = @moonsketchkit.CountingBloomFilter::new(64, 3)
+  filter.add(42)
+  filter.add(42)
+  filter.remove(42)
+  assert_true(filter.might_contain(42))
+}
+
+///|
+test "counting bloom filter exports summary json" {
+  let filter = @moonsketchkit.CountingBloomFilter::new(32, 2)
+  filter.add(1)
+  let json = filter.to_json()
+  assert_true(json.contains("\"type\":\"counting_bloom_filter\""))
+  assert_true(json.contains("\"size\":32"))
+  assert_true(json.contains("\"hash_count\":2"))
+}
+
+///|
 test "count min sketch estimates inserted counts" {
   let sketch = @moonsketchkit.CountMinSketch::new(32, 4)
   sketch.add(10)
