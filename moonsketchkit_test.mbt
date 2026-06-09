@@ -10,6 +10,15 @@ test "bloom filter reports inserted values" {
 }
 
 ///|
+test "bloom filter supports bulk insert" {
+  let filter = @moonsketchkit.BloomFilter::new(96, 4)
+  filter.add_all([3, 5, 8, 13])
+  assert_true(filter.might_contain(3))
+  assert_true(filter.might_contain(13))
+  assert_false(filter.might_contain(21))
+}
+
+///|
 test "bloom filter can be cleared" {
   let filter = @moonsketchkit.BloomFilter::new(64, 3)
   filter.add(123)

@@ -63,6 +63,13 @@ pub fn BloomFilter::add(self : BloomFilter, value : Int) -> Unit {
 }
 
 ///|
+pub fn BloomFilter::add_all(self : BloomFilter, values : Array[Int]) -> Unit {
+  for i = 0; i < values.length(); i = i + 1 {
+    self.add(values[i])
+  }
+}
+
+///|
 pub fn BloomFilter::might_contain(self : BloomFilter, value : Int) -> Bool {
   for seed = 0; seed < self.hash_count; seed = seed + 1 {
     let index = sketch_hash(value, seed, self.size)
