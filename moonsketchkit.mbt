@@ -88,6 +88,17 @@ pub fn BloomFilter::clear(self : BloomFilter) -> Unit {
 }
 
 ///|
+pub fn BloomFilter::merge_from(self : BloomFilter, other : BloomFilter) -> Bool {
+  if self.size != other.size || self.hash_count != other.hash_count {
+    return false
+  }
+  for i = 0; i < self.bits.length(); i = i + 1 {
+    self.bits[i] = self.bits[i] || other.bits[i]
+  }
+  true
+}
+
+///|
 pub fn BloomFilter::bit_count(self : BloomFilter) -> Int {
   let mut count = 0
   for i = 0; i < self.bits.length(); i = i + 1 {

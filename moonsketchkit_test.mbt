@@ -29,6 +29,26 @@ test "bloom filter can be cleared" {
 }
 
 ///|
+test "bloom filter can merge compatible filters" {
+  let left = @moonsketchkit.BloomFilter::new(64, 3)
+  let right = @moonsketchkit.BloomFilter::new(64, 3)
+  left.add(1)
+  right.add(2)
+  assert_true(left.merge_from(right))
+  assert_true(left.might_contain(1))
+  assert_true(left.might_contain(2))
+}
+
+///|
+test "bloom filter rejects incompatible merges" {
+  let left = @moonsketchkit.BloomFilter::new(64, 3)
+  let right = @moonsketchkit.BloomFilter::new(32, 3)
+  right.add(2)
+  assert_false(left.merge_from(right))
+  assert_false(left.might_contain(2))
+}
+
+///|
 test "bloom filter normalizes invalid options" {
   let filter = @moonsketchkit.BloomFilter::new(0, 0)
   filter.add(1)
