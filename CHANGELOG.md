@@ -15,6 +15,7 @@ All notable changes to MoonSketchKit are recorded here.
 - Added JSON summary export helpers.
 - Added CLI demo and tests.
 - Added deterministic benchmark-style command and scenario notes.
+- Added accuracy notes for false positives and frequency estimates.
 
 ### Verified
 

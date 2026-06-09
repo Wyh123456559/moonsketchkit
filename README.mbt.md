@@ -77,3 +77,6 @@ moon run cmd/bench
 - HyperLogLog-style cardinality sketch
 - Serialization and import helpers
 - Benchmark scenarios and false-positive notes
+
+See [Accuracy Notes](docs/accuracy-notes.md) for false-positive and estimate
+error behavior.
