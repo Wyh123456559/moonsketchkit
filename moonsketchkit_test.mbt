@@ -105,6 +105,27 @@ test "count min sketch can be cleared" {
 }
 
 ///|
+test "count min sketch can merge compatible sketches" {
+  let left = @moonsketchkit.CountMinSketch::new(32, 4)
+  let right = @moonsketchkit.CountMinSketch::new(32, 4)
+  left.add_count(11, 3)
+  right.add_count(11, 2)
+  right.add_count(12, 5)
+  assert_true(left.merge_from(right))
+  assert_eq(left.estimate(11), 5)
+  assert_eq(left.estimate(12), 5)
+}
+
+///|
+test "count min sketch rejects incompatible merges" {
+  let left = @moonsketchkit.CountMinSketch::new(32, 4)
+  let right = @moonsketchkit.CountMinSketch::new(16, 4)
+  right.add_count(11, 2)
+  assert_false(left.merge_from(right))
+  assert_eq(left.estimate(11), 0)
+}
+
+///|
 test "count min sketch exports summary json" {
   let sketch = @moonsketchkit.CountMinSketch::new(12, 3)
   let json = sketch.to_json()

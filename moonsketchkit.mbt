@@ -190,6 +190,20 @@ pub fn CountMinSketch::clear(self : CountMinSketch) -> Unit {
 }
 
 ///|
+pub fn CountMinSketch::merge_from(
+  self : CountMinSketch,
+  other : CountMinSketch
+) -> Bool {
+  if self.width != other.width || self.depth != other.depth {
+    return false
+  }
+  for i = 0; i < self.counts.length(); i = i + 1 {
+    self.counts[i] = self.counts[i] + other.counts[i]
+  }
+  true
+}
+
+///|
 pub fn CountMinSketch::cell_count(self : CountMinSketch) -> Int {
   self.width * self.depth
 }
