@@ -66,6 +66,7 @@ test {
 moon check
 moon test
 moon run cmd/main
+moon run cmd/bench
 ```
 
 ## Roadmap

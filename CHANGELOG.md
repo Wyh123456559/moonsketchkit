@@ -14,6 +14,7 @@ All notable changes to MoonSketchKit are recorded here.
 - Added merge helpers for compatible Bloom filters and Count-Min Sketches.
 - Added JSON summary export helpers.
 - Added CLI demo and tests.
+- Added deterministic benchmark-style command and scenario notes.
 
 ### Verified
 
