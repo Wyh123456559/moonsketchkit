@@ -1,0 +1,7 @@
+import {
+  "cn-cheems/moonsketchkit" @moonsketchkit,
+}
+
+options(
+  "is-main": true,
+)
