@@ -1,0 +1,27 @@
+name: Bug report
+description: Report incorrect behavior in MoonSketchKit.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: input
+    id: commit
+    attributes:
+      label: Version or commit
+      placeholder: "d040a23"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What went wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Include a minimal Bloom filter or sketch example.
+    validations:
+      required: true
+
