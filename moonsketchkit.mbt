@@ -138,6 +138,13 @@ pub fn CountMinSketch::add(self : CountMinSketch, value : Int) -> Unit {
 }
 
 ///|
+pub fn CountMinSketch::add_all(self : CountMinSketch, values : Array[Int]) -> Unit {
+  for i = 0; i < values.length(); i = i + 1 {
+    self.add(values[i])
+  }
+}
+
+///|
 pub fn CountMinSketch::add_count(
   self : CountMinSketch,
   value : Int,

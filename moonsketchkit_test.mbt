@@ -59,6 +59,15 @@ test "count min sketch estimates inserted counts" {
 }
 
 ///|
+test "count min sketch supports bulk insert" {
+  let sketch = @moonsketchkit.CountMinSketch::new(32, 4)
+  sketch.add_all([4, 4, 4, 9])
+  assert_eq(sketch.estimate(4), 3)
+  assert_eq(sketch.estimate(9), 1)
+  assert_eq(sketch.estimate(2), 0)
+}
+
+///|
 test "count min sketch ignores non positive counts" {
   let sketch = @moonsketchkit.CountMinSketch::new(16, 3)
   sketch.add_count(8, 0)
